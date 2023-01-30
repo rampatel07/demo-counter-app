@@ -10,7 +10,7 @@ pipeline{
                 
                 script{
                     
-                    git branch: 'main', url: 'https://github.com/vikash-kumar01/mrdevops_javaapplication.git'
+                    git branch: 'main', url: 'https://github.com/rampatel07/demo-counter-app.git'
                 }
             }
         }
@@ -20,7 +20,7 @@ pipeline{
                 
                 script{
                     
-                    sh 'mvn test'
+                    bat 'mvn test'
                 }
             }
         }
@@ -30,7 +30,7 @@ pipeline{
                 
                 script{
                     
-                    sh 'mvn verify -DskipUnitTests'
+                    bat 'mvn verify -DskipUnitTests'
                 }
             }
         }
@@ -40,7 +40,7 @@ pipeline{
                 
                 script{
                     
-                    sh 'mvn clean install'
+                    bat 'mvn clean install'
                 }
             }
         }
@@ -50,9 +50,9 @@ pipeline{
                 
                 script{
                     
-                    withSonarQubeEnv(credentialsId: 'sonar-api') {
+                    withSonarQubeEnv(credentialsId: 'sonarqube-9.8') {
                         
-                        sh 'mvn clean package sonar:sonar'
+                        bat 'mvn clean package sonar:sonar'
                     }
                    }
                     
